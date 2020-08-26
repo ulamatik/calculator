@@ -21,8 +21,6 @@ steps:
     npm test
   displayName: 'npm install, build, and test'
 
-- task: PublishPipelineArtifact@0
-  displayName: 'Publish pipeline artifact'
+- task: PublishBuildArtifacts@1
   inputs:
-    artifactName: 'drop'
-    targetPath: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'
