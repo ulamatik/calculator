@@ -20,3 +20,8 @@ steps:
     npm run build
     npm test
   displayName: 'npm install, build, and test'
+
+  - task: PublishBuildArtifacts@1    
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
