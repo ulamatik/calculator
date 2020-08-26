@@ -20,20 +20,3 @@ steps:
     npm run build
     npm test
   displayName: 'npm install, build, and test'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(Build.Repository.LocalPath)/target'
-    Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true
-    OverWrite: true
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'SpringFramework_fullsources'
-    publishLocation: 'Container'
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
